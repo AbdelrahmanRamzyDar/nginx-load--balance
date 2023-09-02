@@ -1,0 +1,3 @@
+nginx:
+  - server1
+  - server2

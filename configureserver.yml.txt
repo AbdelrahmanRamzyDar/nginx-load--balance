@@ -1,0 +1,19 @@
+- name: configure virtualhost
+  gather_facts: true
+  hosts: "{{ myhosts }}"
+  become: true
+  tasks:
+   - name: Configure Nginx as a Load Balancer
+     template:
+      src: templ/nginx-load.conf.j2
+      dest: /etc/nginx/conf.d/nginx_loadbalancer.conf
+     notify: Restart nginx
+
+
+
+
+  handlers:
+   - name: Restart nginx
+     service:
+      name: nginx
+      state: restarted

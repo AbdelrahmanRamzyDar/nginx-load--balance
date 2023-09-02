@@ -1,0 +1,11 @@
+---
+- name: Install nginx  webserver
+  import_playbook: install-package.yml
+
+- name: Configure firewall
+  import_playbook: configu-service.yml
+
+
+- name: Configure nginx server
+  import_playbook: configureserver.yml
+

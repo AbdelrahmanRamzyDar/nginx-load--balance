@@ -1,0 +1,15 @@
+upstream backend {
+   least_conn;
+  {% for server in nginx %}
+    server {{ server }};
+  {% endfor %}
+}
+
+server {
+  listen 80;
+  server_name 192.168.197.11;
+
+  location / {
+    proxy_pass http://backend;
+  }
+}

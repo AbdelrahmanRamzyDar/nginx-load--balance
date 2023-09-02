@@ -1,0 +1,16 @@
+---
+- name: install package
+  gather_facts: false
+  hosts: "{{ myhosts }}"
+  become: true
+  tasks:
+   - name: Install nginx, and php
+     yum:
+      name:
+       - nginx
+       - php
+       - php-common
+       - php-pecl-apcu
+       - php-cli
+       - php-mysqlnd
+      state: installed
